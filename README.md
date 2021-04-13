@@ -5,7 +5,7 @@
 ## Usage
 
 ```javascript
-import { setNestedProp } from 'dynmaic-props';
+import { setNestedProp } from 'dynamic-props';
 
 const foo = {};
 
@@ -17,7 +17,7 @@ console.log(foo);
 > { bar: { baz: [ <2 empty items>, { qux: 'hello' } ] } }
 
 ```javascript
-import { deleteNestedProp } from 'dynmaic-props';
+import { deleteNestedProp } from 'dynamic-props';
 
 deleteNestedProp`bar.baz[${2}].qux`(foo);
 
