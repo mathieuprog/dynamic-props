@@ -44,7 +44,9 @@ const isEmpty = item => {
 const deleteNestedProp = (path, ...indexes) => {
   const splitPath = path.join('').split('.');
 
-  return object => {
+  return (object, options = {}) => {
+    const { resizeArray } = options;
+
     let cleanPrevObject = null;
 
     for (let [i, key] of splitPath.entries()) {
@@ -59,7 +61,11 @@ const deleteNestedProp = (path, ...indexes) => {
         if (!object[key][index]) {
           break;
         } else if (isLastProp) {
-          delete object[key][index];
+          if (resizeArray) {
+            object[key].splice(index, 1);
+          } else {
+            delete object[key][index];
+          }
           if (!object[key].some(e => e !== undefined)) {
             delete object[key];
           }
@@ -70,7 +76,11 @@ const deleteNestedProp = (path, ...indexes) => {
           const prevCleanPrevObject = cleanPrevObject;
           cleanPrevObject = () => {
             if (isEmpty(o[key][index])) {
-              delete o[key][index];
+              if (resizeArray) {
+                o[key].splice(index, 1);
+              } else {
+                delete o[key][index];
+              }
               if (isEmpty(o[key])) {
                 delete o[key];
                 prevCleanPrevObject && prevCleanPrevObject();

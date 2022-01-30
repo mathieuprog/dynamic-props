@@ -57,3 +57,23 @@ test('deleteNestedProp 4', () => {
   expect(isArray(foo.bar?.baz)).toBeFalsy();
   expect(isObjectLiteral(foo.bar)).toBeTruthy();
 });
+
+test('deleteNestedProp 5', () => {
+  const foo = { bar: { baz: [ 1, 2, 3 ] } };
+
+  deleteNestedProp`bar.baz[${1}]`(foo);
+
+  expect(isArray(foo.bar.baz)).toBeTruthy();
+  expect(foo.bar.baz.length).toBe(3);
+  expect(isObjectLiteral(foo.bar)).toBeTruthy();
+});
+
+test('deleteNestedProp 6', () => {
+  const foo = { bar: { baz: [ 1, 2, 3 ] } };
+
+  deleteNestedProp`bar.baz[${1}]`(foo, { resizeArray: true });
+
+  expect(isArray(foo.bar.baz)).toBeTruthy();
+  expect(foo.bar.baz.length).toBe(2);
+  expect(isObjectLiteral(foo.bar)).toBeTruthy();
+});
