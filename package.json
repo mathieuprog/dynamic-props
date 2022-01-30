@@ -1,9 +1,13 @@
 {
   "name": "dynamic-props",
-  "version": "0.3.0",
+  "version": "1.0.1",
   "description": "Set and delete nested properties",
   "scripts": {
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-node",
+    "transform": {}
   },
   "type": "module",
   "devDependencies": {
@@ -11,7 +15,9 @@
     "@babel/preset-env": "^7.12.13",
     "jest": "^26.6.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "object-array-utils": "^1.1.1"
+  },
   "main": "src/index.js",
   "repository": {
     "type": "git",
