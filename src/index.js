@@ -1,6 +1,10 @@
 import { isArray, isObjectLiteral } from './utils';
 
 const setNestedProp = (path, ...indexes) => {
+  if (path.includes('][')) {
+    throw new Error('multidimensional arrays are not supported');
+  }
+
   const splitPath = path.join('').split('.');
 
   return (object, value) => {
@@ -42,6 +46,10 @@ const isEmpty = item => {
 };
 
 const deleteNestedProp = (path, ...indexes) => {
+  if (path.includes('][')) {
+    throw new Error('multidimensional arrays are not supported');
+  }
+
   const splitPath = path.join('').split('.');
 
   return (object, options = {}) => {
