@@ -13,11 +13,11 @@ test('setNestedProp', () => {
 
   // test override
   setNestedProp`bar.baz[${2}].qux`(foo, 'world');
-  
+
   expect(foo.bar.baz[2].qux).toBe('world');
 
   setNestedProp`bar.baz[${1}]`(foo, 'test');
-  
+
   expect(foo.bar.baz[1]).toBe('test');
   expect(foo.bar.baz[2].qux).toBe('world');
 });
