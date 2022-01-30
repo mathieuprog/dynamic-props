@@ -30,7 +30,7 @@ Note that by default `deleteNestedProp` recursively removes properties containin
 
 ## Limitations
 
-Arrays of arrays are not supported (because I don't personally need it, PR welcome).
+Multidimensional arrays are not supported.
 
 ## Installation
 
