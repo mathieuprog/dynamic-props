@@ -1,5 +1,8 @@
 import { setNestedProp, deleteNestedProp } from './index';
-import { isArray, isObjectLiteral } from './utils';
+import {
+  isArray,
+  isObjectLiteral,
+} from 'object-array-utils';
 
 test('setNestedProp', () => {
   const foo = {};

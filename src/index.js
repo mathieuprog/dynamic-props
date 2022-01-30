@@ -1,4 +1,7 @@
-import { isArray, isObjectLiteral } from './utils';
+import {
+  isArray,
+  isObjectLiteral,
+} from 'object-array-utils';
 
 const setNestedProp = (path, ...indexes) => {
   if (path.includes('][')) {
